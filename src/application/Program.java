@@ -1,8 +1,5 @@
 package application;
 
-import java.rmi.server.UID;
-
-import boardgame.Board;
 import chess.ChessMatch;
 
 public class Program {
