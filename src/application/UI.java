@@ -3,6 +3,7 @@ package application;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.Color;
@@ -31,8 +32,16 @@ public class UI {
 			int row = Integer.parseInt(s.substring(1));
 			return new ChessPosition(column, row);
 		} catch (RuntimeException e) {
-			throw new InputMismatchException("Erro na leitura de posição. Valores válidos de a1 - h8.");
+			throw new InputMismatchException("Erro na leitura de posicao. Valores válidos de a1 - h8.");
 		}
+	}
+	
+	public static void printMatch (ChessMatch chessMatch) {
+		printBoard(chessMatch.getPieces());
+		System.out.println();
+		System.out.println("Turno : " + chessMatch.getTurn());
+		System.out.println("Esperando jodador " + chessMatch.getCurrentPlayer());
+		
 	}
 
 	public static void printBoard(ChessPiece[][] pieces) {
@@ -68,7 +77,7 @@ public class UI {
 		if (piece == null) {
 			System.out.print("-" + ANSI_RESET);
 		} else {
-			if (piece.getColor() == Color.WHITE) {
+			if (piece.getColor() == Color.BRANCO) {
 				System.out.print(ANSI_PURPLE + piece + ANSI_RESET);
 			} else {
 				System.out.print(ANSI_YELLOW + piece + ANSI_RESET);
