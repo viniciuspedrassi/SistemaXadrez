@@ -45,10 +45,15 @@ public class UI {
 		printCapturedPieces(captured);
 		System.out.println();
 		System.out.println("Turno : " + chessMatch.getTurn());
-		System.out.println("Esperando jodador " + chessMatch.getCurrentPlayer());
-		
-		if (chessMatch.getCheck()) {
-			System.out.println("CHECK!");
+		if (!chessMatch.getCheckMate()) {
+			System.out.println("Esperando jodador " + chessMatch.getCurrentPlayer());
+			if (chessMatch.getCheck()) {
+				System.out.println("XEQUE!");
+			}
+		}
+		else {
+			System.out.println("XEQUE MATE!");
+			System.out.println("Vencedor: " + chessMatch.getCurrentPlayer());
 		}
 		
 	}
@@ -87,7 +92,7 @@ public class UI {
 			System.out.print("-" + ANSI_RESET);
 		} else {
 			if (piece.getColor() == Color.BRANCO) {
-				System.out.print(ANSI_PURPLE + piece + ANSI_RESET);
+				System.out.print(ANSI_WHITE + piece + ANSI_RESET);
 			} else {
 				System.out.print(ANSI_YELLOW + piece + ANSI_RESET);
 			}
